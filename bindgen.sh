@@ -2,7 +2,7 @@
 
 set -e
 
-source setenv.sh
+. setenv.sh
 
 COMPS=$IDF_PATH/components
 SYSROOT=$HOME/xtensa-esp32-elf/xtensa-esp32-elf/sysroot
