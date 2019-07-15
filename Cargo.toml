@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
-esp32-sys = { path = "esp32-sys" }
+esp32-sys = { path = "../esp32-sys/esp32-sys" }
 
 [profile.dev]
 lto = false 
