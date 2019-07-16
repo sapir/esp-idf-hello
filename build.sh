@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 . ./setenv.sh
 
 # export V=1
