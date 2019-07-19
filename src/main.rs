@@ -2,11 +2,14 @@
 #![no_main]
 
 mod delay;
-mod gpio;
-mod uart;
 
-use crate::{delay::delay, gpio::OutputPin, uart::Uart};
-use core::{fmt::Write, panic::PanicInfo, time::Duration};
+use crate::delay::delay;
+use core::{fmt::Write as _, panic::PanicInfo, time::Duration};
+use embedded_hal::{digital::v2::OutputPin as _, serial::Write};
+use esp32_hal::{
+    gpio::OutputPin,
+    serial::{self, Uart0},
+};
 
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
@@ -15,15 +18,17 @@ fn panic(_info: &PanicInfo) -> ! {
 
 #[no_mangle]
 pub fn app_main() {
-    let mut uart = Uart::new(uart::Which::Uart0);
-    let mut led = OutputPin::new(2);
+    let mut uart = unsafe { Uart0::new(17, 16) };
+    let mut led = unsafe { OutputPin::new(2) };
+
+    let uart = &mut uart as &mut dyn Write<u8, Error = serial::Error>;
 
     loop {
-        led.set_low();
+        led.set_low().unwrap();
         delay(Duration::from_secs(1));
 
-        uart.write_str("This is a test string.\n").unwrap();
-        led.set_high();
+        write!(uart, "Writing with esp32-hal!\n").unwrap();
+        led.set_high().unwrap();
         delay(Duration::from_secs(1));
     }
 }
