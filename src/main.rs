@@ -1,12 +1,10 @@
 #![no_std]
 #![no_main]
 
-mod delay;
-
-use crate::delay::delay;
-use core::{fmt::Write as _, panic::PanicInfo, time::Duration};
-use embedded_hal::{digital::v2::OutputPin as _, serial::Write};
+use core::{fmt::Write as _, panic::PanicInfo};
+use embedded_hal::{digital::v2::OutputPin as _, prelude::*, serial::Write};
 use esp32_hal::{
+    delay::FreeRtos,
     gpio::OutputPin,
     serial::{self, Uart0},
 };
@@ -25,10 +23,10 @@ pub fn app_main() {
 
     loop {
         led.set_low().unwrap();
-        delay(Duration::from_secs(1));
+        FreeRtos.delay_ms(1000);
 
         write!(uart, "Writing with esp32-hal!\n").unwrap();
         led.set_high().unwrap();
-        delay(Duration::from_secs(1));
+        FreeRtos.delay_ms(1000);
     }
 }
