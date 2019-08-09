@@ -10,27 +10,29 @@ dependencies = [
 ]
 
 [[package]]
-name = "esp32-hal"
-version = "0.1.0"
+name = "esp-idf-hal"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "embedded-hal 0.2.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "esp32-sys 0.1.0",
+ "esp-idf-sys 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "nb 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
+
+[[package]]
+name = "esp-idf-sys"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "esp32-hello"
 version = "0.1.0"
 dependencies = [
  "embedded-hal 0.2.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "esp32-hal 0.1.0",
- "esp32-sys 0.1.0",
+ "esp-idf-hal 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "esp-idf-sys 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "nb 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
-
-[[package]]
-name = "esp32-sys"
-version = "0.1.0"
 
 [[package]]
 name = "nb"
@@ -44,5 +46,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [metadata]
 "checksum embedded-hal 0.2.3 (registry+https://github.com/rust-lang/crates.io-index)" = "ee4908a155094da7723c2d60d617b820061e3b4efcc3d9e293d206a5a76c170b"
+"checksum esp-idf-hal 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "eed6f5b300980227f1a39c570344e1a8e748c72433cdb170ea60b3d24be74e49"
+"checksum esp-idf-sys 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "f6b824a1aff03a105d67b11119595dedbbb4943471dd7e47131f417bb2484eae"
 "checksum nb 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "b1411551beb3c11dedfb0a90a0fa256b47d28b9ec2cdff34c25a2fa59e45dbdc"
 "checksum void 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)" = "6a02e4885ed3bc0f2de90ea6dd45ebcbb66dacffe03547fadbb0eeae2770887d"
