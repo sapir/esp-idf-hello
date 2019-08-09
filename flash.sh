@@ -15,5 +15,5 @@ python $IDF_PATH/components/esptool_py/esptool/esptool.py \
     --flash_mode dio \
     --flash_freq 40m \
     --flash_size detect \
-    0x10000 target/xtensa-esp32-none-elf/release/esp32-hello.bin \
+    0x10000 target/xtensa-esp32-none-elf/release/esp-idf-hello.bin \
     0x8000 build/partitions_singleapp.bin
